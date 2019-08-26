@@ -14,7 +14,7 @@ namespace Mailman.Server.Models
     public class MergeTemplate
     {
         /// <summary>
-        /// Identifier for the merge tempalte
+        /// Identifier for the merge template.
         /// </summary>
         [Required]
 
@@ -35,7 +35,7 @@ namespace Mailman.Server.Models
         public string CreatedBy { get; set; }
         private DateTime createdDateUtc;
         /// <summary>
-        /// The date and time the merge tempalte was creatd.
+        /// The date and time the merge template was created.
         /// </summary>
         [Required]
         public DateTime CreatedDateUtc
@@ -78,7 +78,7 @@ namespace Mailman.Server.Models
         public int HeaderRowNumber { get; set; }
 
         /// <summary>
-        /// The column where a simestamp is put after running a mail merge
+        /// The column where a timestamp is put after running a mail merge.
         /// </summary>
         public TimestampColumn TimestampColumn { get; set; }
 

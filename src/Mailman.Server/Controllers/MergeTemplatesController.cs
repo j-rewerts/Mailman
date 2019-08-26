@@ -34,7 +34,7 @@ namespace Mailman.Server.Controllers
         private readonly ILogger _logger;
 
         /// <summary>
-        /// Constructor for merge templates
+        /// Constructor for merge templates.
         /// </summary>
         /// <param name="mergeTemplateRepository">Service to merge template persistance store.</param>
         /// <param name="mailmanHub"></param>
@@ -83,7 +83,7 @@ namespace Mailman.Server.Controllers
             try { mergeTemplates = await _mergeTemplateRepository.GetMergeTemplatesAsync(spreadsheetId); }
             catch (SheetNotFoundException)
             {
-                _logger.Warning("Spreadsheet '{SpreadSheetId} not foud", spreadsheetId);
+                _logger.Warning("Spreadsheet '{SpreadSheetId} not found", spreadsheetId);
                 return NotFound();
             }
             return Ok(_mapper.Map<IEnumerable<Services.Data.MergeTemplate>, IEnumerable<MergeTemplate>>(mergeTemplates));
@@ -91,7 +91,7 @@ namespace Mailman.Server.Controllers
 
         // POST: api/MergeTemplates/Email
         /// <summary>
-        /// Create a new merge template and save it to the database
+        /// Create a new merge template and save it to the database.
         /// </summary>
         /// <returns></returns>
         [HttpPost("Email")]
@@ -111,7 +111,7 @@ namespace Mailman.Server.Controllers
                 await _mergeTemplateRepository.AddMergeTemplateAsync(newMergeTemplate);
             }
             catch (Exception e){
-                _logger.Error(e, "Unable to save the data to datbase");
+                _logger.Error(e, "Unable to save the data to database");
                 throw e;
             }
             return CreatedAtAction("Created", newMergeTemplate);
@@ -120,7 +120,7 @@ namespace Mailman.Server.Controllers
 
         // PUT: api/MergeTemplates/Email
         /// <summary>
-        /// Updates a merge template with new values
+        /// Updates a merge template with new values.
         /// </summary>
         /// <returns></returns>
         [HttpPut("Email")]
@@ -139,7 +139,7 @@ namespace Mailman.Server.Controllers
                 await _mergeTemplateRepository.UpdateMergeTemplateAsync(newMergeTemplate);
             }
             catch (Exception e){
-                _logger.Error(e, "Unable to save the data to datbase");
+                _logger.Error(e, "Unable to save the data to database");
                 throw e;
             }
     
@@ -148,7 +148,7 @@ namespace Mailman.Server.Controllers
 
         // DELETE: api/ApiWithActions/5
         /// <summary>
-        /// Deletes a merge template
+        /// Deletes a merge template.
         /// </summary>
         /// <returns></returns>
         [HttpDelete("Email")]
@@ -168,7 +168,7 @@ namespace Mailman.Server.Controllers
                 await _mergeTemplateRepository.DeleteMergeTemplateAsync(oldMergeTemplate);
             }
             catch (Exception e){
-                _logger.Error(e, "Unable to save the data to datbase");
+                _logger.Error(e, "Unable to save the data to database");
                 throw e;
             }
     
@@ -181,7 +181,7 @@ namespace Mailman.Server.Controllers
         /// <param name="options">
         /// Parameters to start a mail merge, 
         /// including MergeTemplateId and optionally a SignalR connectionId 
-        /// for proress notifications on the merge.
+        /// for progress notifications on the merge.
         /// </param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
@@ -203,12 +203,12 @@ namespace Mailman.Server.Controllers
         }
 
         /// <summary>
-        /// Starts a new mail merge and blocks until the merge is complete
+        /// Starts a new mail merge and blocks until the merge is complete.
         /// </summary>
         /// <param name="options">
         /// Parameters to start a mail merge, 
         /// including MergeTemplateId and optionally a SignalR connectionId 
-        /// for proress notifications on the merge.
+        /// for progress notifications on the merge.
         /// </param>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
@@ -230,7 +230,7 @@ namespace Mailman.Server.Controllers
         }
 
         /// <summary>
-        /// Callback for MailMan workers to update clients of progress
+        /// Callback for Mailman workers to update clients of progress.
         /// </summary>
         /// <param name="progress">The amount of progress made on the mail merge</param>
         /// <returns></returns>
@@ -253,7 +253,7 @@ namespace Mailman.Server.Controllers
         }
 
         /// <summary>
-        /// Callback for MailMan workers to notify clients a mail merge has completed
+        /// Callback for Mailman workers to notify clients a mail merge has completed.
         /// </summary>
         /// <param name="progress">A <see cref="MailMergeProgress"/> object with the merge results</param>
         /// <returns></returns>
