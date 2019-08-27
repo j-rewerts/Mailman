@@ -127,7 +127,7 @@ namespace Mailman.Services
                 .AddGoogle(configuration);
 
             // configure the service that saves the tokens to a cache
-            services.ConfureGoogleOAuthTokenService(configuration);
+            services.ConfigureGoogleOAuthTokenService(configuration);
 
             return authenticationBuilder;
         }
@@ -305,7 +305,7 @@ namespace Mailman.Services
             return authenticationBuilder;
         }
 
-        internal static void ConfureGoogleOAuthTokenService(this IServiceCollection services, IConfiguration configuration)
+        internal static void ConfigureGoogleOAuthTokenService(this IServiceCollection services, IConfiguration configuration)
         {
             string redisUrl = Environment.GetEnvironmentVariable("GOOGLE_TOKEN_CACHE_URL");
             if (!string.IsNullOrWhiteSpace(redisUrl))
