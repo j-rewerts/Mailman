@@ -52,7 +52,7 @@ namespace Mailman.Services
             {
                 // it could be that we've never read from the sheet before,
                 // if so, we'll create a new entry here
-                var spreadsheetInfo = await _mergeTemplateContext.SpreadSheets.FindAsync(new object[] { spreadsheetId }, cancellationToken);;
+                var spreadsheetInfo = await _mergeTemplateContext.SpreadSheets.FindAsync(new object[] { spreadsheetId }, cancellationToken); ;
                 if (spreadsheetInfo == null)
                 {
                     _logger.Information("Reading from legacy mailman (mm-config) into Mailman 2.0 database");
@@ -89,10 +89,10 @@ namespace Mailman.Services
             }
             return returnValue;
         }
-    
+
 
         public async Task<MergeTemplate> UpdateMergeTemplateAsync(MergeTemplate mergeTemplate, CancellationToken cancellationToken = default(CancellationToken))
-        {       
+        {
             var entry = _mergeTemplateContext.Entry(mergeTemplate);
             entry.State = EntityState.Modified;
             await _mergeTemplateContext.SaveChangesAsync(cancellationToken);

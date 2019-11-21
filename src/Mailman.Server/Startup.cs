@@ -79,7 +79,7 @@ namespace Mailman
             });
 
             // Add Swagger
-            services.ConfigureSwagger(modelBaseClasses: new Type[] { typeof(Server.Models.MergeTemplate)});
+            services.ConfigureSwagger(modelBaseClasses: new Type[] { typeof(Server.Models.MergeTemplate) });
 
             // Add SignalR
             services.AddSignalR();
@@ -101,11 +101,11 @@ namespace Mailman
                 // default to name in docker-compose file
                 rabbitmqHost = "rabbitmq";
             }
-            services.AddWyrm(options => 
+            services.AddWyrm(options =>
             {
                 options.UseRabbitMq(rabbitmqHost);
 
-                options.AddEventHandler<MergeTemplateNotificationService>(); 
+                options.AddEventHandler<MergeTemplateNotificationService>();
             });
 
         }
@@ -127,7 +127,7 @@ namespace Mailman
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
-            
+
             app.UseSwagger();
 
             // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.), 
@@ -147,7 +147,7 @@ namespace Mailman
             app.UseMailmanAuthentication();
             app.UseSpaStaticFiles();
 
-            app.UseEndpoints(endpoints => 
+            app.UseEndpoints(endpoints =>
             {
                 app.UseRouting();
                 endpoints.MapHub<MailmanHub>("/hub");

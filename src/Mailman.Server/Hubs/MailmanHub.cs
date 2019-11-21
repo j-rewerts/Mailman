@@ -29,7 +29,7 @@ namespace Mailman.Server.Hubs
 
         private readonly MergeTemplatesController _mergeTemplatesController;
         private static Hashtable _userIds;
-        
+
 
         /// <summary>
         /// Starts running a new mail merge, and set up notifications for
@@ -55,17 +55,18 @@ namespace Mailman.Server.Hubs
         /// <returns></returns>
         public String RegisterConnection()
         {
-            if (!this.Context.User.Identity.IsAuthenticated) {
+            if (!this.Context.User.Identity.IsAuthenticated)
+            {
                 return "Please log in.";
             }
 
-            if(_userIds.ContainsKey(this.Context.UserIdentifier))
+            if (_userIds.ContainsKey(this.Context.UserIdentifier))
             {
                 _userIds[this.Context.UserIdentifier] = Context.ConnectionId;
             }
             else
             {
-              _userIds.Add(this.Context.UserIdentifier, Context.ConnectionId);
+                _userIds.Add(this.Context.UserIdentifier, Context.ConnectionId);
             }
             return "Success";
         }
@@ -76,7 +77,7 @@ namespace Mailman.Server.Hubs
         /// <returns>The connection id.</returns>
         public String GetConnectionId()
         {
-          return Context.ConnectionId;
+            return Context.ConnectionId;
         }
     }
 }

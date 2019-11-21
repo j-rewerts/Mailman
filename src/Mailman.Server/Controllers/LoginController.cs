@@ -82,14 +82,14 @@ namespace Mailman.Server.Controllers
         public async Task<IActionResult> Signin(String SignalrId)
         {
             // Send the user information to the client.
-            await this._hub.Clients.Client(SignalrId).SendAsync("USER_LOGIN", new 
+            await this._hub.Clients.Client(SignalrId).SendAsync("USER_LOGIN", new
             {
                 user = new
                 {
-                  email = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value,
-                  name = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value,
-                  givenName = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value,
-                  surname = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value,
+                    email = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value,
+                    name = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value,
+                    givenName = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value,
+                    surname = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value,
                 }
             });
             return new ContentResult()

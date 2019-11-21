@@ -13,7 +13,7 @@ namespace Mailman.Worker
     /// events are added to that queue
     /// </summary>
     [Event("mailman.mergetemplate.start")]
-    [Event("mailman.mergetemplate.progress.notification", Direction=Direction.Out)]
+    [Event("mailman.mergetemplate.progress.notification", Direction = Direction.Out)]
     public class StartMergeTemplateService : IEventHandler<RunMailMergeOptions, MailMergeProgress>
     {
         /// <summary>
@@ -61,22 +61,22 @@ namespace Mailman.Worker
                     // notify client UI if we have a signalR connectionId specified
                     if (!string.IsNullOrWhiteSpace(options.ConnectionId))
                     {
-                        _queueService.SendMessage("mailman.mergetemplate.progress.notification", 
-                            new MailMergeProgress() 
-                            { 
-                                MergeTemplateId = options.MergeTemplateId, 
-                                ConnectionId = options.ConnectionId, 
-                                Progress = progress  
+                        _queueService.SendMessage("mailman.mergetemplate.progress.notification",
+                            new MailMergeProgress()
+                            {
+                                MergeTemplateId = options.MergeTemplateId,
+                                ConnectionId = options.ConnectionId,
+                                Progress = progress
                             });
                     }
                 },
                 cancellationToken);
 
-            return new MailMergeProgress() 
-            { 
-                MergeTemplateId = options.MergeTemplateId, 
-                ConnectionId = options.ConnectionId, 
-                Progress = result  
+            return new MailMergeProgress()
+            {
+                MergeTemplateId = options.MergeTemplateId,
+                ConnectionId = options.ConnectionId,
+                Progress = result
             };
         }
 
@@ -86,5 +86,5 @@ namespace Mailman.Worker
         /// <value></value>
         EventContext IEventHandler.Context { get; set; }
 
-    }   
+    }
 }

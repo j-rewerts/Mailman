@@ -8,9 +8,6 @@ namespace Mailman.Services.Data
     {
         public EmailTemplate EmailTemplate { get; set; }
 
-
-
-
         internal new static EmailMergeTemplate CreateFrom(string id, string spreadsheetId, string serialized)
         {
             var returnValue = new EmailMergeTemplate();

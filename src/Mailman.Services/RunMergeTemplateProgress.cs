@@ -4,7 +4,7 @@ namespace Mailman.Services
 {
     public class RunMergeTemplateProgress
     {
-        public RunMergeTemplateProgress() {}
+        public RunMergeTemplateProgress() { }
 
         internal RunMergeTemplateProgress(int total)
         {

@@ -22,7 +22,7 @@ namespace Mailman.Services.Security
         [Required]
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
-        public DateTime ExpiryUtc{ get; set; }
+        public DateTime ExpiryUtc { get; set; }
     }
 
 }

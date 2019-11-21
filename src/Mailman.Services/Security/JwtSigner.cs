@@ -32,10 +32,10 @@ namespace Mailman.Services.Security
         public string CreateJwtToken(IEnumerable<Claim> claims)
         {
             var payload = new JwtPayload(
-                _options.Issuer, 
-                _options.Audience, 
-                claims, 
-                DateTime.Now, 
+                _options.Issuer,
+                _options.Audience,
+                claims,
+                DateTime.Now,
                 DateTime.Now.AddMonths(1));
 
             var secToken = new JwtSecurityToken(_serverJwtHeader, payload);

@@ -78,7 +78,7 @@ namespace Mailman.Worker
 
             // Add Swagger
             services.ConfigureSwagger();
-            
+
             // Add Wyrm
             ConfigureWyrm(services);
         }
@@ -95,13 +95,13 @@ namespace Mailman.Worker
                 // default to name in docker-compose file
                 rabbitmqHost = "rabbitmq";
             }
-            services.AddWyrm(options => 
+            services.AddWyrm(options =>
             {
                 options.UseRabbitMq(rabbitmqHost);
 
-                options.AddEventHandler<StartMergeTemplateService>(); 
+                options.AddEventHandler<StartMergeTemplateService>();
             });
 
-        }        
+        }
     }
 }

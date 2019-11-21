@@ -17,7 +17,7 @@ namespace Mailman.Server.Models
         /// Identifier for the merge template
         /// </summary>
         public string Id
-        { 
+        {
             get
             {
                 if (_id == null)
@@ -29,14 +29,14 @@ namespace Mailman.Server.Models
             set { _id = value; }
         }
         private string _id;
-        
+
         /// <summary>
         /// The type of merge template. 
         /// Currently only "Email" type is supported.
         /// </summary>
         [Required]
         [JsonConverter(typeof(StringEnumConverter))]
-        public MergeTemplateType Type { get;set; }
+        public MergeTemplateType Type { get; set; }
 
         /// <summary>
         /// The user who created this merge template.
@@ -52,19 +52,19 @@ namespace Mailman.Server.Models
         {
             get
             {
-              if (createdDateUtc.HasValue)
-                  return this.createdDateUtc;
-              else
-                  return DateTime.Now;
+                if (createdDateUtc.HasValue)
+                    return this.createdDateUtc;
+                else
+                    return DateTime.Now;
             }
             set
-            {          
+            {
                 if (value > DateTime.MinValue && value <= DateTime.UtcNow)
                     createdDateUtc = value;
                 else
                     throw new ArgumentOutOfRangeException(nameof(CreatedDateUtc), value, "CreatedDateUtc cannot be in the future");
 
-            }            
+            }
         }
 
         private string spreadSheetId;

@@ -11,8 +11,9 @@ namespace Mailman.Tests
         [TestCase]
         public void IsMapConfigValid()
         {
-            var config = new MapperConfiguration(cfg => {
-              cfg.AddProfile<MergeTemplateProfile>();
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MergeTemplateProfile>();
             });
             config.AssertConfigurationIsValid();
         }

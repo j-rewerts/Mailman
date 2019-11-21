@@ -13,7 +13,7 @@ namespace Mailman.Services.Google
 
         Task<IList<IList<object>>> GetValuesAsync(string spreadsheetId, string range);
 
-        Task GetValuesAsDataPumpAsync(string spreadsheetId, string range, 
+        Task GetValuesAsDataPumpAsync(string spreadsheetId, string range,
             Func<IList<object>, Task> dataPump);
 
         Task GetValuesAsDictionaryDataPump(string spreadsheetId, string range,

@@ -42,17 +42,17 @@ namespace Mailman.Server
         /// <returns></returns>
         public async Task HandleAsync(MailMergeProgress progress, CancellationToken cancellationToken)
         {
-            _logger.Information("{MergeTemplateId}: {Complete} / {Total} ({PercentComplete}%)", 
-                progress.MergeTemplateId, 
-                progress.Progress.Completed, 
-                progress.Progress.Total, 
+            _logger.Information("{MergeTemplateId}: {Complete} / {Total} ({PercentComplete}%)",
+                progress.MergeTemplateId,
+                progress.Progress.Completed,
+                progress.Progress.Total,
                 progress.Progress.PercentComplete);
-                
+
             if (!string.IsNullOrWhiteSpace(progress.ConnectionId))
             {
                 await _mailmanHub.Clients.Clients(progress.ConnectionId)
                     .SendAsync(
-                        progress.Progress.PercentComplete >= 100 ? "mailMergeCompleted" : "mailMergeProgressUpdated", 
+                        progress.Progress.PercentComplete >= 100 ? "mailMergeCompleted" : "mailMergeProgressUpdated",
                         progress);
             }
         }
@@ -63,5 +63,5 @@ namespace Mailman.Server
         /// <value></value>
         EventContext IEventHandler.Context { get; set; }
 
-    }   
+    }
 }

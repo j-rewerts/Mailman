@@ -30,7 +30,7 @@ namespace Mailman.Services
             _logger = logger;
         }
 
-        
+
 
         public async Task<RunMergeTemplateProgress> RunMergeTemplateAsync(
             MergeTemplate mergeTemplate,
@@ -53,9 +53,9 @@ namespace Mailman.Services
             {
                 // we'll define a custom range
                 range = new A1Notation(mergeTemplate.SheetName,
-                    dataRange.StartColumn, 
-                    mergeTemplate.HeaderRowNumber, 
-                    dataRange.EndColumn, 
+                    dataRange.StartColumn,
+                    mergeTemplate.HeaderRowNumber,
+                    dataRange.EndColumn,
                     dataRange.EndRow).ToString();
             }
 
@@ -111,7 +111,7 @@ namespace Mailman.Services
             return true;
         }
 
-        private Task ProcessMergeTemplateAsync(EmailTemplate template, 
+        private Task ProcessMergeTemplateAsync(EmailTemplate template,
             IDictionary<string, object> values)
         {
             var to = new List<string>();
@@ -125,7 +125,8 @@ namespace Mailman.Services
             {
                 cc = template.Cc.Split(',').Select(x => Render(x, values)).ToList();
             }
-            if (!string.IsNullOrEmpty(template.Bcc)){
+            if (!string.IsNullOrEmpty(template.Bcc))
+            {
                 bcc = template.Bcc.Split(',').Select(x => Render(x, values)).ToList();
             }
 

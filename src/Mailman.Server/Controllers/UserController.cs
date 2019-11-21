@@ -35,12 +35,12 @@ namespace Mailman.Server.Controllers
         public IActionResult GetCurrentUser()
         {
             return new JsonResult(new
-                {
-                  email = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value,
-                  name = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value,
-                  givenName = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value,
-                  surname = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value,
-                });
+            {
+                email = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value,
+                name = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value,
+                givenName = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value,
+                surname = User.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value,
+            });
         }
     }
 }

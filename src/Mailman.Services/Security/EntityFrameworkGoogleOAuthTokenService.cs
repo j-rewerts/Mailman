@@ -31,7 +31,7 @@ namespace Mailman.Services.Security
             DateTime expiryUtc = string.IsNullOrWhiteSpace(expiryDateString) ? DateTime.MinValue : DateTime.Parse(expiryDateString).ToUniversalTime();
 
             TokenInfo tokenInfo;
-                        // note the use of the query rather than Find(...)
+            // note the use of the query rather than Find(...)
             // this is to ensure we always get a fresh copy from the database
             try { tokenInfo = await _oAuthTokenContext.Tokens.AsNoTracking().FirstOrDefaultAsync(x => x.Email == email); }
             catch (Exception err)

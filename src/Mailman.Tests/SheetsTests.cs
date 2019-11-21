@@ -48,7 +48,7 @@ namespace Mailman.Tests
         [TestCase("BC:BC", "BC:BC", "", "BC", null, "BC", null)]
         [TestCase("9:9", "9:9", "", "", 9, "", 9)]
         [TestCase("", "", "", "", null, "", null)]
-        public void A1NotationRange(string range, 
+        public void A1NotationRange(string range,
             string expectedParsedRange,
             string expectedSheetName,
             string expectedStartColumn,
@@ -107,7 +107,7 @@ namespace Mailman.Tests
             int? endRow,
             string expectedA1Notation)
         {
-            var a1 = new A1Notation(sheetName, 
+            var a1 = new A1Notation(sheetName,
                 startColumn, startRow, endColumn, endRow);
             a1.ToString().Should().Be(expectedA1Notation);
         }

@@ -28,25 +28,27 @@ namespace Mailman.Services.Data
         /// This is the same id as shown in the address bar of a browser when
         /// editing the Google Sheet
         /// </remarks>
-        public string SpreadSheetId { 
+        public string SpreadSheetId
+        {
             get => spreadSheetId;
             set
-            {          
+            {
                 if (!string.IsNullOrWhiteSpace(value))
                     spreadSheetId = value;
                 else
                     throw new ArgumentNullException(nameof(SpreadSheetId));
-            } 
+            }
         }
-        
+
         private string sheetName;
         /// <summary>
         /// The name of the sheet that this merge template gets its data from
         /// </summary>
-        public string SheetName {             
+        public string SheetName
+        {
             get => sheetName;
             set
-            {          
+            {
                 if (!string.IsNullOrWhiteSpace(value))
                     sheetName = value;
                 else
@@ -67,10 +69,11 @@ namespace Mailman.Services.Data
         /// <summary>
         /// The user who created the merge template
         /// </summary>
-        public string CreatedBy { 
+        public string CreatedBy
+        {
             get => createdBy;
             set
-            {          
+            {
                 if (!string.IsNullOrWhiteSpace(value))
                     createdBy = value;
                 else
@@ -86,12 +89,12 @@ namespace Mailman.Services.Data
         {
             get => createdDateUtc;
             set
-            {          
+            {
                 if (value > DateTime.MinValue && value <= DateTime.UtcNow)
                     createdDateUtc = value;
                 else
                     throw new ArgumentOutOfRangeException(nameof(CreatedDateUtc), value, "CreatedDateUtc cannot be in the future");
-            }            
+            }
         }
 
         public int HeaderRowNumber { get; set; }
@@ -147,7 +150,7 @@ namespace Mailman.Services.Data
             SheetName = mergeData.sheet;
             HeaderRowNumber = headerRowNumber;
             Conditional = conditional;
-            TimestampColumn =  TimestampColumn.Create(timestampColumn, timestampColumnShouldUseTitle, Title);
+            TimestampColumn = TimestampColumn.Create(timestampColumn, timestampColumnShouldUseTitle, Title);
         }
 
         // Used by repository to create object from its store (in the Google Sheet)
