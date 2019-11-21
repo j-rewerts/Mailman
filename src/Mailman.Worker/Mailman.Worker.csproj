@@ -5,10 +5,6 @@
     <UserSecretsId>ca95052e-a3a0-4578-a568-0a8e29d67b5a</UserSecretsId>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\Users\Dan\Documents\GitHub\Mailman\src\Mailman.Worker\Mailman.Worker.xml</DocumentationFile>
-  </PropertyGroup>
-
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="wwwroot\" />
