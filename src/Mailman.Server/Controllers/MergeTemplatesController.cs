@@ -77,7 +77,7 @@ namespace Mailman.Server.Controllers
         /// <returns>A list of merge templates for the given spreadsheet.</returns>
         /// <response code="200">Returns the merge templates for the Sheet.</response>
         /// <response code="404">If the Google Sheet cannot be found.</response>
-        [HttpGet("{spreadsheetId}")]
+        [HttpGet("Email/{spreadsheetId}")]
         [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(IEnumerable<MergeTemplate>))]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         public async Task<IActionResult> Get(string spreadsheetId)
@@ -89,7 +89,7 @@ namespace Mailman.Server.Controllers
                 _logger.Warning("Spreadsheet '{SpreadSheetId} not foud", spreadsheetId);
                 return NotFound();
             }
-            return Ok(_mapper.Map<IEnumerable<Services.Data.MergeTemplate>, IEnumerable<MergeTemplate>>(mergeTemplates));
+            return Ok(_mapper.Map<IEnumerable<Services.Data.MergeTemplate>, IEnumerable<EmailMergeTemplate>>(mergeTemplates));
         }
 
         // POST: api/MergeTemplates/Email
